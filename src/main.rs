@@ -132,7 +132,7 @@ impl Default for NotificationConfig {
             new_day_greetings: true,
             server_monitoring: true,
             productivity_score: true,
-            http_port: DEFAULT_PORT,
+            http_port: 0,
         }
     }
 }
@@ -394,7 +394,14 @@ fn start_service(hostname: String, config: NotificationConfig) -> Result<()> {
         log::info!("Server monitoring disabled in configuration");
     }
 
-    start_http_server(shutdown_rx_http, config.http_port);
+    if config.http_port != 0 {
+        start_http_server(shutdown_rx_http, config.http_port);
+    } else {
+        log::info!(
+            "HTTP notification server disabled (set http_port = {} in config to enable)",
+            DEFAULT_PORT
+        );
+    }
 
     // Main threshold monitoring loop (matching Python's threshold_alerts function)
     let result = threshold_alerts(shutdown_rx_main, config.alerts);

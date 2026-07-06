@@ -23,7 +23,8 @@ productivity_score = true
 # Port for the local HTTP API that other modules use to send notifications
 # (POST http://127.0.0.1:<http_port>/notify). See the README section
 # "Sending notifications from other modules".
-http_port = 5667
+# Disabled by default (http_port = 0). Set to 5667 (or any free port) to enable.
+http_port = 0
 
 # Category alerts configuration
 # Each alert monitors a specific category and sends notifications when thresholds are reached
