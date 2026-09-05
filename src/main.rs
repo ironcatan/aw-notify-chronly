@@ -958,7 +958,7 @@ fn send_initial_checkins(productivity_score: bool) -> Result<()> {
                 "timestamp": Utc::now().to_rfc3339(),
                 "title": "Time yesterday",
                 "message": message_yesterday,
-                "app": "ActivityWatch",
+                "app": "Chronly",
             });
             output.push_str(&serde_json::to_string(&notification_yesterday)?);
             output.push('\n');
@@ -980,7 +980,7 @@ fn send_initial_checkins(productivity_score: bool) -> Result<()> {
                 "timestamp": Utc::now().to_rfc3339(),
                 "title": "Time today",
                 "message": message_today,
-                "app": "ActivityWatch",
+                "app": "Chronly",
             });
             output.push_str(&serde_json::to_string(&notification_today)?);
             output.push('\n');
@@ -1172,7 +1172,7 @@ fn start_server_monitor(shutdown_rx: Receiver<()>) {
                 if current_status {
                     log::info!("Server is back online");
                     if let Err(e) =
-                        notify("Server Available", "ActivityWatch server is back online.")
+                        notify("Server Available", "Chronly server is back online.")
                     {
                         log::error!("Failed to send server available notification: {}", e);
                     }
@@ -1180,7 +1180,7 @@ fn start_server_monitor(shutdown_rx: Receiver<()>) {
                     log::warn!("Server went offline");
                     if let Err(e) = notify(
                         "Server Unavailable",
-                        "ActivityWatch server is down. Data may not be saved!",
+                        "Chronly server is down. Data may not be saved!",
                     ) {
                         log::error!("Failed to send server unavailable notification: {}", e);
                     }
@@ -1502,7 +1502,7 @@ fn display_notification(title: &str, message: &str, sender: Option<&str>) -> Res
             "timestamp": Utc::now().to_rfc3339(),
             "title": title,
             "message": message,
-            "app": "ActivityWatch",
+            "app": "Chronly",
         });
 
         if let Some(s) = sender {
@@ -1549,7 +1549,7 @@ fn display_notification(title: &str, message: &str, sender: Option<&str>) -> Res
     Notification::new()
         .summary(&display_title)
         .body(message)
-        .appname("ActivityWatch")
+        .appname("Chronly")
         .timeout(5000)
         .show()?;
 
@@ -1565,7 +1565,7 @@ fn try_terminal_notifier(title: &str, message: &str) -> Result<bool> {
         Ok(output) if output.status.success() => {
             let result = Command::new("terminal-notifier")
                 .arg("-title")
-                .arg("ActivityWatch")
+                .arg("Chronly")
                 .arg("-subtitle")
                 .arg(title)
                 .arg("-message")
