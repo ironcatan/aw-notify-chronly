@@ -1,4 +1,9 @@
-# aw-notify-rs
+# aw-notify-rs (Chronly fork)
+
+**This is Chronly's notification daemon, a private fork of `aw-notify-rs`,
+maintained by Manuel Arroyo Algar. Not affiliated with or endorsed by the
+ActivityWatch project.** Licensed under MPLv2, same as upstream. Only change
+so far: notifications show "Chronly" instead of "ActivityWatch".
 
 A simplified Rust implementation of [aw-notify](https://github.com/ActivityWatch/aw-notify) that matches the Python version's behavior while providing Rust's performance and safety benefits.
 
