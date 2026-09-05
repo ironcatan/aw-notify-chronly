@@ -1171,9 +1171,7 @@ fn start_server_monitor(shutdown_rx: Receiver<()>) {
             if current_status != previous_status {
                 if current_status {
                     log::info!("Server is back online");
-                    if let Err(e) =
-                        notify("Server Available", "Chronly server is back online.")
-                    {
+                    if let Err(e) = notify("Server Available", "Chronly server is back online.") {
                         log::error!("Failed to send server available notification: {}", e);
                     }
                 } else {
