@@ -883,7 +883,7 @@ fn send_checkin(title: &str, date: Option<DateTime<Utc>>) -> Result<()> {
     if !top_categories.is_empty() {
         let message = top_categories
             .iter()
-            .map(|(cat, time)| format!("- {}: {}", decode_unicode_escapes(cat), time))
+            .map(|(cat, time)| format!("• {}: {}", decode_unicode_escapes(cat), time))
             .collect::<Vec<_>>()
             .join("\n");
 
@@ -906,7 +906,7 @@ fn send_detailed_checkin(title: &str, date: Option<DateTime<Utc>>) -> Result<()>
     if !top_categories.is_empty() {
         let message = top_categories
             .iter()
-            .map(|(cat, time)| format!("- {}: {}", decode_unicode_escapes(cat), time))
+            .map(|(cat, time)| format!("• {}: {}", decode_unicode_escapes(cat), time))
             .collect::<Vec<_>>()
             .join("\n");
 
@@ -950,7 +950,7 @@ fn send_initial_checkins(productivity_score: bool) -> Result<()> {
         if !top_categories_yesterday.is_empty() {
             let message_yesterday = top_categories_yesterday
                 .iter()
-                .map(|(cat, time)| format!("- {}: {}", decode_unicode_escapes(cat), time))
+                .map(|(cat, time)| format!("• {}: {}", decode_unicode_escapes(cat), time))
                 .collect::<Vec<_>>()
                 .join("\n");
 
@@ -972,7 +972,7 @@ fn send_initial_checkins(productivity_score: bool) -> Result<()> {
         if !top_categories_today.is_empty() {
             let message_today = top_categories_today
                 .iter()
-                .map(|(cat, time)| format!("- {}: {}", decode_unicode_escapes(cat), time))
+                .map(|(cat, time)| format!("• {}: {}", decode_unicode_escapes(cat), time))
                 .collect::<Vec<_>>()
                 .join("\n");
 
